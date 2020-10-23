@@ -1,0 +1,38 @@
+extends ./layouts/main-layout.pug 
+
+
+block content
+
+    if (action !== 'undefined' && action === 'delete')
+        div.alert.alert-danger.mt-3 Film Silindi.
+
+    if (action !== 'undefined' && action === 'duzenlendi')
+        div.alert.alert-success.mt-3 Film Güncellendi.
+    
+    if filmler.length > 0
+        table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+            thead
+                tr
+                    th(style="width: 20px;") Sıra
+                    th Film Adı
+                    th(style="width: 125px;") Puan
+                    th(style="width: 125px;") Düzenle
+                    th(style="width: 70px;") Sil
+            tbody
+                each film in filmler
+                    tr
+                        td #{film.pos}
+                        td.text-capitalize !{film.film}
+                        if (film.puan>-10000)
+                            td #{film.puan}
+                        else
+                            td Oylanmamış
+                        td
+                            a.btn.btn-primary.btn-sm.mr-2(href=`/film/${film._id}`) Düzenle
+                        td
+                            form(action="/delete-film" method='POST')
+                                input(type="hidden" name='filmid' value=`${film._id}`)
+                                input(type='submit' value="Sil").btn.btn-danger.btn-sm
+                            
+    else
+        h1 Henüz Paylaşımda Bulunmamışsın.

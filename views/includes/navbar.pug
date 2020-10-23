@@ -1,0 +1,17 @@
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark.shadow
+            div.container
+                a(href="/" style="color: green;").navbar-brand FilmSitesi
+                button(type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse")
+                    span.navbar-toggler-icon
+
+                div.collapse.navbar-collapse#navbarCollapse
+                    div.navbar-nav
+
+                        li.nav-item
+                            a(href="/" class=(path=='/'?'nav-link active':'nav-link')) Ana Sayfa
+
+                        li.nav-item
+                            a(href="/izlenmisfilmler" class=(path=='/izlenmisfilmler'?'nav-link active':'nav-link')) İzlenmis Filmler
+
+                        li.nav-item
+                            a(href="/izlenecekfilmler" class=(path=='/izlenecekfilmler'?'nav-link active':'nav-link')) İzlenecek Filmler
