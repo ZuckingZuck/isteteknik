@@ -16,12 +16,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(filmRoutes.routes);
 
+const PORT = process.env.PORT || 3000;
 
 const ConnectionString = 'mongodb+srv://OTY:mahir1453@cluster0.y65b2.mongodb.net/filmbotu?retryWrites=true&w=majority';
 
 mongoose.connect(ConnectionString)
     .then(() => {
         console.log('Connected to mongodb');
-        app.listen(3000);
+        app.listen(PORT);
     })
     .catch(err => { console.log(err) });
