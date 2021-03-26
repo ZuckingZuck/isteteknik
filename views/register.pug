@@ -1,0 +1,22 @@
+extends ../views/layouts/main-layout.pug 
+block styles
+    link(rel="stylesheet" href="/css/forms.css")
+block content
+    if errorMessage
+        div.alert.alert-danger.col-sm-7 #{errorMessage}
+    div.bg-dark.text-light.mx-auto.p-4.col-md-6.rounded.mt-3
+        form(action="/register" method="POST")
+
+            div.form-group.row
+                label(for="name").col-sm-3.col-form-label Kullanıcı Adı
+                div.col-sm-9.pr-0
+                    input(type="text" name="name").form-control#name
+
+            div.form-group.row
+                label(for="password").col-sm-3.col-form-label Şifre
+                div.col-sm-9.pr-0
+                    input(type="password" name="password").form-control#password
+
+            div.form-group.row
+                div.col-sm-9.offset-sm-3
+                    input(type="submit" value="Kayıt Ol").btn.btn-success

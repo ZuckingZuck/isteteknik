@@ -2,4 +2,42 @@ extends ./layouts/main-layout.pug
 
 
 block content
-    p Burası Ana Sayfa
+
+    .row
+        .col-md-6
+
+            div.bg-dark.p-3.text-light.mt-2.rounded.shadow İZLENMİŞ FİLMLER
+            
+            if filmler.length > 0
+                table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+                    thead
+                        tr
+                            th Film Adı
+                            th(style="width: 150px;") Eylem
+                    tbody
+                        each film in filmler
+                            tr
+                                td.text-capitalize !{film.film}
+                                td
+                                    a.btn.btn-success.btn-sm(href=`/filmdetay/${film.id}`) Detay
+                                    
+            else
+                h1 Henüz Paylaşımda Bulunmamışsın.
+
+        .col-md-6
+            
+            div.bg-dark.p-3.text-light.mt-2.rounded.shadow İZLENECEK FİLMLER
+
+            if izlenecekfilmler.length > 0
+                table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+                    thead
+                        tr
+                            th Film Adı
+                    tbody
+                        each film in izlenecekfilmler
+                            tr
+                                td.text-capitalize !{film.film}
+                                    
+                                    
+            else
+                h1 Henüz Paylaşımda Bulunmamışsın.

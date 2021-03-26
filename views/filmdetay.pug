@@ -1,0 +1,14 @@
+extends ./layouts/main-layout.pug 
+
+
+block content
+    div.bg-dark.shadow.rounded.p-2.mt-3
+        h4.text-light Film Bilgileri
+        div.bg-dark.shadow.p-2.text-light Film Adı: #{film.film}
+        div.bg-dark.shadow.p-2.text-light.mt-2 Film Puanı: #{film.puan}
+
+    div.bg-dark.shadow.rounded.p-2.mt-3
+        h4.text-light Yorumlar
+        each quiz in quizes
+            div.bg-dark.shadow.p-2.text-light #{quiz.content}
+            div.bg-dark.shadow.p-2.text-light #{quiz.author}

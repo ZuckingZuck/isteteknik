@@ -10,8 +10,16 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-dark.shadow
                         li.nav-item
                             a(href="/" class=(path=='/'?'nav-link active':'nav-link')) Ana Sayfa
 
-                        li.nav-item
-                            a(href="/izlenmisfilmler" class=(path=='/izlenmisfilmler'?'nav-link active':'nav-link')) İzlenmis Filmler
+                        if !isAuthenticated
+                            li.nav-item
+                                a(href="/login" class=(path=='/login'?'nav-link active':'nav-link')) Giriş Yap
 
-                        li.nav-item
-                            a(href="/izlenecekfilmler" class=(path=='/izlenecekfilmler'?'nav-link active':'nav-link')) İzlenecek Filmler
+                        if isAuthenticated
+                            li.nav-item
+                                a(href="/izlenmisfilmler" class=(path=='/izlenmisfilmler'?'nav-link active':'nav-link')) İzlenmis Filmler
+
+                            li.nav-item
+                                a(href="/izlenecekfilmler" class=(path=='/izlenecekfilmler'?'nav-link active':'nav-link')) İzlenecek Filmler
+
+                            li.nav-item
+                                a.nav-link.me-2(href="/logout") Çıkış Yap

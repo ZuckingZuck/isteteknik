@@ -1,25 +1,43 @@
 const express = require('express');
 const router = express.Router();
 const filmController = require('../controllers/film');
+const isAuthenticated = require('../middleware/authentication');
+const auth = require('../middleware/auth');
 
-router.get('/', filmController.getIndex);
+router.get('/',auth, filmController.getIndex);
 
-router.get('/izlenmisfilmler', filmController.getIzlenmisFilmler);
+router.get('/izlenmisfilmler',auth, isAuthenticated, filmController.getIzlenmisFilmler);
 
-router.post('/film-ekle', filmController.postIndex);
+router.post('/film-ekle',auth, filmController.postIndex);
 
-router.use('/delete-film', filmController.postDeleteFilm);
+router.use('/delete-film',auth, filmController.postDeleteFilm);
 
-router.get('/izlenecekfilmler', filmController.getIzlenecekler);
+router.get('/izlenecekfilmler',auth, filmController.getIzlenecekler);
 
-router.post('/aktar', filmController.postAktar);
+router.post('/aktar',auth, filmController.postAktar);
 
-router.post('/filmekle', filmController.postFilmEkle);
+router.post('/filmekle',auth, filmController.postFilmEkle);
 
-router.get('/film/:id', filmController.getFilmDuzenle);
+router.get('/film/:id',auth, filmController.getFilmDuzenle);
 
-router.post('/filmduzenle', filmController.postFilmDuzenle);
+router.post('/filmduzenle',auth, filmController.postFilmDuzenle);
 
-router.post('/quizduzenle', filmController.postQuizDuzenle);
+router.post('/quizduzenle',auth, filmController.postQuizDuzenle);
+
+router.get('/filmdetay/:filmid',auth, filmController.getFilmDetay);
+
+//USER
+
+router.get('/login',auth, filmController.getLogin);
+
+router.post('/login',auth, filmController.postLogin);
+
+
+router.get('/register',auth, filmController.getRegister);
+
+router.post('/register',auth, filmController.postRegister);
+
+
+router.get('/logout', auth, filmController.getLogout);
 
 module.exports.routes = router;
