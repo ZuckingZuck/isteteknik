@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const cookieParser = require('cookie-parser');
 
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 const User = require('./models/User');
 
@@ -69,6 +69,6 @@ app.use(filmRoutes.routes);
 mongoose.connect(ConnectionString)
     .then(() => {
         console.log('Connected to mongodb');
-        app.listen(PORT);
+        app.listen(port);
     })
     .catch(err => { console.log(err) });
