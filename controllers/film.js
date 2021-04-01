@@ -24,6 +24,7 @@ exports.getIndex = (req, res, next) => {
 
 exports.getIzlenmisFilmler = (req, res, next) => {
     Film.find().then(filmler => {
+        console.log(filmler);
         res.render("izlenmisfilmler", {
             title: "- İzlenmis Filmler",
             filmler: filmler,
@@ -147,6 +148,14 @@ exports.getFilmDetay = (req,res,next) => {
             })
         })
     })
+}
+
+exports.getIzlenecekFilmSil = (req,res,next) => {
+    let filmid = req.body.filmid;
+
+    IzlenecekFilm.findOneAndDelete({_id: filmid}).then(result => {
+        res.redirect("/izlenecekfilmler");
+    });
 }
 
 

@@ -23,6 +23,7 @@ block content
                 tr
                     th Film Adı
                     th(style="width: 150px;") Eylem
+                    th(style="width: 70px;") Sil
             tbody
                 each film in filmler
                     tr
@@ -32,6 +33,12 @@ block content
                                 input(type='hidden' name="filmadi" value=`${film.film}`)
                                 input(type='hidden' name="filmid" value=`${film._id}`)
                                 input(type='submit' value="Aktar").btn.btn-danger.btn-sm
+                        td
+                            form(action="/izlenecekfilmsil" method='POST')
+                                input(type='hidden' name="filmid" value=`${film._id}`)
+                                input(type='submit' value="Sil").btn.btn-danger.btn-sm
+
+                           
                             
     else
         h1 Henüz Paylaşımda Bulunmamışsın.

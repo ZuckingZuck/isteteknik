@@ -26,6 +26,8 @@ router.post('/quizduzenle',auth, filmController.postQuizDuzenle);
 
 router.get('/filmdetay/:filmid',auth, filmController.getFilmDetay);
 
+router.post("/izlenecekfilmsil", auth, filmController.getIzlenecekFilmSil);
+
 //USER
 
 router.get('/login',auth, filmController.getLogin);
