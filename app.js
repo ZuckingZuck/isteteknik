@@ -25,7 +25,7 @@ const cookieParser = require('cookie-parser');
 
 const port = process.env.WEB_CONCURRENCY || 8080;
 
-const User = require('./models/User');
+const user = require('./models/user');
 
 
 const ConnectionString = 'mongodb+srv://OTY:mahir1453@cluster0.y65b2.mongodb.net/filmbotu?retryWrites=true&w=majority';
