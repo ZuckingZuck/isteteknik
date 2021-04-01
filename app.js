@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const cookieParser = require('cookie-parser');
 
-const port = process.env.WEB_CONCURRENCY || 8080;
+const port = process.env.PORT || 8080;
 
 const User = require('./models/user');
 
