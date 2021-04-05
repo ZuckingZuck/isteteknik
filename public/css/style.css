@@ -10,3 +10,12 @@ a {
 .buton1 {
     display: inline-block !important;
 }
+
+.transbgcolor{
+    background-color: rgba(0, 0, 0,.8);
+}
+
+.bgposition{
+    background-size: cover;
+    background-repeat: no-repeat;
+}

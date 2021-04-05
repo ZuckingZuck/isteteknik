@@ -6,6 +6,7 @@ const izlenecekfilmler = require('../models/izlenecekfilmler');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const crypto = require('crypto');
+const MovieDB = require('node-themoviedb');
 
 exports.getIndex = (req, res, next) => {
     IzlenecekFilm.find().then(izlenecekfilmler => {
@@ -136,17 +137,75 @@ exports.postQuizDuzenle = (req, res, next) => {
 
 exports.getFilmDetay = (req,res,next) => {
     let filmid = req.params.filmid;
+    
 
-    Film.find({_id: filmid}).then(film => {
-        let filim = film[0];
+    const mdb = new MovieDB("f066cb9d57ebb443ac69d62fbc7c16f5",{language: "tr"});
 
-        Quiz.find({film_id: filim._id}).then(quiz => {
-            res.render("filmdetay", {
-                title: film[0].film + " detay",
-                film: film[0],
-                quizes: quiz
-            })
-        })
+    //mdb.movie.getDetails(args).then(details => {console.log(details)}).catch(err => {console.log(err)});
+
+
+    Film.findOne({_id: filmid}).then(film => {
+        let filim = film;
+
+        mdb.search.movies({query: {query: filim.film, page: 1,}}).then(filiim => {
+            let id = filiim.data.results[0].id;
+    
+            const args = {
+                pathParameters: {
+                  movie_id: id,
+                }
+            };
+    
+            mdb.movie.getDetails(args).then(details => {
+                console.log(details);
+
+                Quiz.find({film_id: filim._id}).then(quiz => {
+                    res.render("filmdetay", {
+                        title: film.film + " detay",
+                        film: film,
+                        quizes: quiz,
+                        filmDetails: details
+                    })
+                })
+
+            }).catch(err => {console.log(err)});
+    
+            
+    
+        }).catch(err => console.log(err));
+    })
+}
+
+exports.getIzlenecekFilmDetay = (req,res,next) => {
+    let filmid = req.params.filmid;
+
+    const mdb = new MovieDB("f066cb9d57ebb443ac69d62fbc7c16f5",{language: "tr"});
+
+    IzlenecekFilm.findOne({_id: filmid}).then(film => {
+        let filim = film;
+
+        mdb.search.movies({query: {query: filim.film, page: 1,}}).then(filiim => {
+            let id = filiim.data.results[0].id;
+    
+            const args = {
+                pathParameters: {
+                  movie_id: id,
+                }
+            };
+    
+            mdb.movie.getDetails(args).then(details => {
+                console.log(details);
+                res.render("filmdetay", {
+                    title: film.film + " detay",
+                    film: film,
+                    filmDetails: details
+                })
+
+            }).catch(err => {console.log(err)});
+    
+            
+    
+        }).catch(err => console.log(err));
     })
 }
 

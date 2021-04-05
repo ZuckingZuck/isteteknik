@@ -28,6 +28,8 @@ router.get('/filmdetay/:filmid',auth, filmController.getFilmDetay);
 
 router.post("/izlenecekfilmsil", auth, filmController.getIzlenecekFilmSil);
 
+router.get("/izlenecekfilmdetay/:filmid", auth, filmController.getIzlenecekFilmDetay);
+
 //USER
 
 router.get('/login',auth, filmController.getLogin);

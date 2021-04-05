@@ -33,10 +33,13 @@ block content
                     thead
                         tr
                             th Film Adı
+                            th Eylem
                     tbody
                         each film in izlenecekfilmler
                             tr
                                 td.text-capitalize !{film.film}
+                                td
+                                    a.btn.btn-success.btn-sm(href=`/izlenecekfilmdetay/${film.id}`) Detay
                                     
                                     
             else
