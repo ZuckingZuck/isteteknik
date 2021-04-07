@@ -13,8 +13,8 @@ block content
                 div.shadow.p-2.mt-2.transbgcolor.text-light.rounded Genel Bakış: #{filmDetails.data.overview}
 
     if quizes
-        div.bg-dark.shadow.rounded.p-2.mt-3
+        div.bg-info.shadow.rounded.p-2.mt-3
             h4.text-light Yorumlar
             each quiz in quizes
-                div.bg-dark.shadow.p-2.text-light #{quiz.content}
-                div.bg-dark.shadow.p-2.text-light #{quiz.author}
+                div.p-2.text-light #{quiz.content}
+                div.shadow.p-2.text-light #{quiz.author}

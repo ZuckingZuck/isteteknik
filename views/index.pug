@@ -6,40 +6,45 @@ block content
     .row
         .col-md-6
 
-            div.bg-dark.p-3.text-light.mt-2.rounded.shadow İZLENMİŞ FİLMLER
+            div.bg-info.p-3.text-light.mt-2.rounded.shadow İZLENMİŞ FİLMLER
             
             if filmler.length > 0
-                table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+                table.table.table-bordered.table-info.table-hover.mt-3.shadow
                     thead
                         tr
                             th Film Adı
-                            th(style="width: 150px;") Eylem
+                            th(style="width: 60px;") Puan
+                            th(style="width: 80px;") Eylem
                     tbody
                         each film in filmler
                             tr
                                 td.text-capitalize !{film.film}
+                                if film.puan.toString().length > 1
+                                    td !{film.puan}
+                                else
+                                    td !{film.puan}.0
                                 td
-                                    a.btn.btn-success.btn-sm(href=`/filmdetay/${film.id}`) Detay
+                                    a.btn.btn-info.btn-sm(href=`/filmdetay/${film.id}`) Detay
                                     
             else
                 h1 Henüz Paylaşımda Bulunmamışsın.
 
         .col-md-6
             
-            div.bg-dark.p-3.text-light.mt-2.rounded.shadow İZLENECEK FİLMLER
+            div.bg-info.p-3.text-light.mt-2.rounded.shadow İZLENECEK FİLMLER
 
             if izlenecekfilmler.length > 0
-                table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+                table.table.table-bordered.table-info.table-hover.mt-3.shadow
                     thead
                         tr
                             th Film Adı
-                            th Eylem
+                            th(style="width: 80px;") Eylem
                     tbody
                         each film in izlenecekfilmler
                             tr
                                 td.text-capitalize !{film.film}
                                 td
-                                    a.btn.btn-success.btn-sm(href=`/izlenecekfilmdetay/${film.id}`) Detay
+                                    a.btn.btn-info.btn-sm(href=`/izlenecekfilmdetay/${film.id}`) Detay
                                     
                                     
             else
