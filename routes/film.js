@@ -44,4 +44,7 @@ router.post('/register',auth, filmController.postRegister);
 
 router.get('/logout', auth, filmController.getLogout);
 
+//Oneri
+router.get("/filmoner", auth, filmController.getFilmOner);
+
 module.exports.routes = router;

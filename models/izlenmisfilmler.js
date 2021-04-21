@@ -14,8 +14,7 @@ const izlenenfilmlerSchema = mongoose.Schema({
         default: -10000
     },
     ratings: {
-        type: Array,
-        default: ["pipi"]
+        type: Object,
     },
     pos: {
         type: Number

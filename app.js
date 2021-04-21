@@ -64,7 +64,6 @@ app.use((req, res, next) => {
 app.use(filmRoutes.routes);
 
 
-
 mongoose.connect(ConnectionString)
     .then(() => {
         console.log('Connected to mongodb');

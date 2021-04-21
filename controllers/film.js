@@ -146,32 +146,30 @@ exports.getFilmDetay = (req,res,next) => {
 
     Film.findOne({_id: filmid}).then(film => {
         let filim = film;
-
-        mdb.search.movies({query: {query: filim.film, page: 1,}}).then(filiim => {
-            let id = filiim.data.results[0].id;
-    
-            const args = {
-                pathParameters: {
-                  movie_id: id,
-                }
-            };
-    
-            mdb.movie.getDetails(args).then(details => {
-                console.log(details);
-
-                Quiz.find({film_id: filim._id}).then(quiz => {
-                    res.render("filmdetay", {
-                        title: film.film + " detay",
-                        film: film,
-                        quizes: quiz,
-                        filmDetails: details
-                    })
-                })
-
-            }).catch(err => {console.log(err)});
-    
+        mdb.search.movies({query: {query: film.film}}).then(filiim => {
+           filiim.data.results.map(pipi => {
+                if(pipi.title === film.film.trim()){
+                    console.log(pipi);
+                    let args = {
+                        pathParameters: {
+                          movie_id: pipi.id,
+                        }
+                    };
             
-    
+                    mdb.movie.getDetails(args).then(details => {
+        
+                        Quiz.find({film_id: filim._id}).then(quiz => {
+                           res.render("filmdetay", {
+                                title: film.film + " detay",
+                                film: film,
+                                quizes: quiz,
+                                filmDetails: details
+                            })
+                        })
+        
+                    }).catch(err => {console.log(err)});
+                }
+            })
         }).catch(err => console.log(err));
     })
 }
@@ -298,4 +296,12 @@ exports.getLogout = (req, res, next) => {
         console.log(err);
         res.redirect('/');
     });
+}
+
+//Oneri 
+exports.getFilmOner = (req,res,next) => {
+    res.render("filmoner",{
+        title: "Film Oner",
+        path: "/filmoner"
+    })
 }
