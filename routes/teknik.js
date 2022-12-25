@@ -1,64 +1,64 @@
 const express = require('express');
 const router = express.Router();
-const filmController = require('../controllers/teknik');
+const isteController = require('../controllers/teknik');
 const isAuthenticated = require('../middleware/authentication');
 const isAdmin = require('../middleware/admin');
 
-router.get('/', filmController.getIndex);
+router.get('/', isteController.getIndex);
 
-router.get('/tamamlanmis', isAuthenticated,isAdmin, filmController.getYapilmisIsler);
+router.get('/tamamlanmis', isAuthenticated,isAdmin, isteController.getYapilmisIsler);
 
-//router.post('/film-ekle',auth, filmController.postIndex);
+//router.post('/film-ekle',auth, isteController.postIndex);
 
-router.use('/yapilmisissil',isAdmin, filmController.postDeleteYapilmisIs);
+router.use('/yapilmisissil',isAdmin, isteController.postDeleteYapilmisIs);
 
-router.get('/yapilacak',isAdmin, filmController.getYapilacaklar);
+router.get('/yapilacak',isAdmin, isteController.getYapilacaklar);
 
-router.post('/aktar',isAdmin, filmController.postAktar);
+router.post('/aktar',isAdmin, isteController.postAktar);
 
-//router.post('/yapilacakisekle',isAdmin, filmController.postYapilacakIsEkle);
+//router.post('/yapilacakisekle',isAdmin, isteController.postYapilacakIsEkle);
 
-router.post('/yapilmisisekle', filmController.postYapilmisIsEkle);
+router.post('/yapilmisisekle', isteController.postYapilmisIsEkle);
 
-router.get('/tamamlanmis/:id',isAdmin, filmController.getYapilmisIsDuzenle);
+router.get('/tamamlanmis/:id',isAdmin, isteController.getYapilmisIsDuzenle);
 
-router.post('/tamamlanmis',isAdmin, filmController.postYapilmisIsDuzenle);
-
-
-
-router.post("/yapilacakissil", isAdmin, filmController.getYapilacakIsSil);
+router.post('/tamamlanmis',isAdmin, isteController.postYapilmisIsDuzenle);
 
 
-//router.get("/getjson", auth, filmController.getJson);
+
+router.post("/yapilacakissil", isAdmin, isteController.getYapilacakIsSil);
+
+
+//router.get("/getjson", auth, isteController.getJson);
 
 //USER
 
-router.get('/login', filmController.getLogin);
+router.get('/login', isteController.getLogin);
 
-router.post('/login', filmController.postLogin);
-
-
-router.get('/register', filmController.getRegister);
-
-router.post('/register', filmController.postRegister);
+router.post('/login', isteController.postLogin);
 
 
-router.get('/logout', isAuthenticated, filmController.getLogout);
+router.get('/register', isteController.getRegister);
+
+router.post('/register', isteController.postRegister);
+
+
+router.get('/logout', isAuthenticated, isteController.getLogout);
 
 
 //Admin
 
-router.get("/admin", isAdmin, isAuthenticated, filmController.getAdmin);
+router.get("/admin", isAdmin, isAuthenticated, isteController.getAdmin);
 
-router.get("/admin/users", isAdmin, isAuthenticated, filmController.getAdminUsers);
+router.get("/admin/users", isAdmin, isAuthenticated, isteController.getAdminUsers);
 
-router.get("/admin/profile", isAdmin, isAuthenticated, filmController.getAdminProfile);
+router.get("/admin/profile", isAdmin, isAuthenticated, isteController.getAdminProfile);
 
-router.get("/admin/tamamlanmis", isAdmin, isAuthenticated, filmController.getAdminIzlenmis);
+router.get("/admin/tamamlanmis", isAdmin, isAuthenticated, isteController.getAdminIzlenmis);
 
-router.get("/admin/yapilacak", isAdmin, isAuthenticated, filmController.getAdminIzlenecek);
+router.get("/admin/yapilacak", isAdmin, isAuthenticated, isteController.getAdminIzlenecek);
 
-router.get("/admin/tamamlanmis/:id", isAdmin, isAuthenticated, filmController.getAdminIzlenecekDuzenle);
+router.get("/admin/tamamlanmis/:id", isAdmin, isAuthenticated, isteController.getAdminIzlenecekDuzenle);
 
 
 module.exports.routes = router;
