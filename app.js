@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 console.log("test");
 console.log("test2");
+console.log("test3");
 
 const cookieParser = require('cookie-parser');
 
