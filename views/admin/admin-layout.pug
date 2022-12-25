@@ -1,0 +1,14 @@
+html(lang="en")
+
+    include ./admin-head
+
+    body
+        .wrapper
+            include ./admin-menu.pug
+            .main-panel(style="margin-top: 0")
+                include ./admin-navbar.pug
+            
+                block content
+        
+
+        include ./admin-scripts

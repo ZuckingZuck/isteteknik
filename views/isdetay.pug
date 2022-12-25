@@ -1,0 +1,13 @@
+extends ./layouts/main-layout.pug 
+
+
+block content
+    
+        h4 Film Bilgileri
+        div.d-flex
+            div.shadow.rounded
+                
+            div.ml-1
+                div.shadow.p-2.transbgcolor.text-light.rounded Film Adı: #{is.kasa}
+                div.shadow.p-2.mt-2.transbgcolor.text-light.rounded Film Puanı: #{is.anakart}
+                div.shadow.p-2.mt-2.transbgcolor.text-light.rounded Genel Bakış: #{is.teslimalan}

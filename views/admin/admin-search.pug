@@ -1,0 +1,24 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+        .row 
+            .col-md-12 
+                if (action !== 'undefined' && action === 'eklendi')
+                    div.alert.alert-success.text-light#kaybol Film listenize eklendi.
+
+                if (action !== 'undefined' && action === 'faveklendi')
+                    div.alert.alert-success.text-light#kaybol Film favori filmler listenize eklendi.
+        .row
+            .col-md-12
+                .form-group.rounded.shadow.bg-info
+                    div.form-group.p-2
+                        div
+                            label.text-light.mx-auto.mt-1
+                                strong.pl-1 Film Ara
+                                i.fas.fa-search.ml-1
+                        div
+                            input(type="text" placeholder="Film Adı").form-control.mb-2#oneriInput 
+        .row 
+            .col-md-12
+                .row.px-xl-5.px.lg-0#degerler

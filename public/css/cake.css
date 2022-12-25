@@ -1,0 +1,5 @@
+#myCanvas{
+    transform: rotate(90deg);
+    width: 250px;
+    margin-left: 50px;
+}

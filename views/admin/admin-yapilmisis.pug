@@ -1,0 +1,45 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+            .row
+                .col-md-12
+                    if (action !== 'undefined' && action === 'delete')
+                        div#saklan.alert.alert-danger.text-light Film Silindi.
+
+                    if (action !== 'undefined' && action === 'duzenlendi')
+                        div.alert.alert-success.text-light Film Güncellendi.
+
+            .row
+                .col-md-12
+                    
+                    if YapilmisIsler.length > 0
+                        
+                        table.table.table-bordered.table-hover.mt-2.shadow.table-striped
+                            thead
+                                tr
+                                    th Kasa
+                                    th Anakart
+                                    th Yapılan İş
+                                    th Talep Eden
+                                    th Teslim Alan 
+
+                                    th(style="width: 125px;") Düzenle
+                                    th(style="width: 70px;") Sil
+                            tbody
+                                each is in YapilmisIsler
+                                    tr
+                                        td #{is.kasa}
+                                        td.text-capitalize !{is.anakart}
+                                        td #{is.yapilmisis}
+                                        td #{is.talepeden}
+                                        td #{is.teslimalan}
+                                        td
+                                            a.btn.btn-primary.btn-sm.mr-2(href=`/admin/tamamlanmisisler/${is._id}`) Düzenle
+                                        td
+                                            form(action="/delete-yapilmis" method='POST')
+                                                input(type="hidden" name='id' value=`${is._id}`)
+                                                input(type='submit' value="Sil").btn.btn-danger.btn-sm
+                                            
+                    else
+                        h1 Henüz Paylaşımda Bulunmamışsın.

@@ -1,0 +1,79 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+        .row 
+            .col-md-12 
+                if (action !== 'undefined' && action === 'favdelete')
+                    div#saklan.alert.alert-danger.text-light Favori Film Silindi.
+                if (action !== 'undefined' && action === 'myfilmdelete')
+                    div#saklan.alert.alert-danger.text-light Film Listenizden Silindi.
+        .row 
+            .col-md-12.d-flex.justify-content-center
+                .row.container
+                    .col-md-12
+                        .card.user-card-full
+                            .row.m-l-0.m-r-0
+                                .col-4.bg-c-lite-green.user-profile
+                                    .card-block.text-center.text-white
+                                        .m-b-20
+                                        img(src=`${dcuser.avatarURL()}` alt='User-Profile-Image').mb-2.yuvarlat
+                                        h6.f-w-600  #{user.name}
+                                        p #{user.role}
+                                            i.mdi.mdi-square-edit-outline.feather.icon-edit.m-t-10.f-16
+                                .col-8
+                                    .card-block
+                                        h6.m-b-20.p-b-5.b-b-default.f-w-600 Bilgi
+                                        .row
+                                            .col-sm-6
+                                                p.m-b-10.f-w-600 Yaptığı Quizler
+                                                h6.text-muted.f-w-400 #{quizes.length}
+                                            .col-sm-6
+                                                p.m-b-10.f-w-600 Discord ID
+                                                h6.text-muted.f-w-400 #{user.dc_id}
+                                        h6.m-b-20.m-t-40.p-b-5.b-b-default.f-w-600 İşlemler
+                                        .row
+                                            .col-sm-6
+                                                button.btn.btn-sm.btn-warning Şifre Değiştir
+                                            .col-sm-6
+                                                button.btn.btn-sm.btn-info Nick Değiştir
+
+        .row 
+            .col-md-6
+                .row.container
+                    h5 MyList
+                    table.table.table-striped.table-hover.table-bordered.round
+                        thead 
+                            tr 
+                                th Film Adı
+                                th(style="width: 190px;") Izlenecek Filmler
+                                th(style="width: 100px;") Eylem
+                        tbody
+                            each onerifilm in oneriFilmler
+                                tr 
+                                    td #{onerifilm.movie_title}
+                                    td
+                                        form(action="")
+                                        button.btn.btn-success.btn-sm Ekle
+                                    td
+                                        form(action="/myfilmsil" method="POST")
+                                            input(type="hidden" value=`${onerifilm._id}` name="filmid")
+                                            button(type="submit").btn.btn-danger.btn-sm Sil
+
+       
+            .col-md-6
+                .row.container
+                    h5 Favori Filmler
+                    table.table.table-striped.table-hover.table-bordered.round
+                        thead 
+                            tr 
+                                th Film Adı
+                                th(style="width: 100px;") Eylem
+                        tbody
+                            each favfilm in favfilmler
+                                tr 
+                                    td #{favfilm.movie_title}
+                                    td
+                                        form(action="/favsil" method="POST")
+                                            input(type="hidden" value=`${favfilm._id}` name="filmid")
+                                            button(type="submit").btn.btn-danger.btn-sm Sil

@@ -4,12 +4,13 @@ html(lang="en")
     include ../includes/head
 
     body
-
-        include ../includes/navbar.pug
+        if path !== "/login" && path !== "/register"
+            include ../includes/navbar.pug
 
 
         div.container.pt-100.mb-5
             block content
         
+        img.wave(src='img/wave.svg')
 
         include ../includes/script

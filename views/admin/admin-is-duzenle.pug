@@ -1,0 +1,15 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+        .row
+            .col-md-12 
+                form(action="/yapilmisisduzenle" method='POST').mt-1.bg-secondary.p-2.rounded.shadow
+                    div.form-group
+                        label.text-light.mx-auto
+                            strong Yapılmış İş Düzenle
+                        input(type="text" id="kasa" name="kasa" value=`${is.kasa}`).form-control.mb-2
+                        input(type="text" id="anakart" name="anakart" value=`${is.anakart}`).form-control.mb-2
+                        input(type="text" id="yapilmisis" name="yapilmisis" value=`${is.yapilmisis}`).form-control.mb-2
+                        input(type="hidden" id="id" name="id" value=`${is._id}`).form-control.mb-2
+                        button(type="submit").btn.btn-primary.mt-2 Güncelle

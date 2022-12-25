@@ -1,0 +1,26 @@
+
+block content
+    h2 Yeterli yetkiye sahip değilsiniz!
+    h2#gerisay 
+
+    script.
+        let countdown = 10;
+        let gerisay = document.getElementById("gerisay");
+        const countdownInterval = setInterval(() => {
+            console.log(countdown);
+            gerisay.innerHTML = `<h2>${countdown} saniye içerisinde ana sayfaya yönlendirileceksiniz!</h2>`;
+            countdown--;
+
+            if (countdown === 0) {
+                clearInterval(countdownInterval);
+                window.location = '/';
+                console.log('Gerisayım tamamlandı!');
+            }
+        }, 1000);
+
+                    
+
+
+
+        
+        

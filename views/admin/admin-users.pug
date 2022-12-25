@@ -1,0 +1,21 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+            .row
+                .col-md-12
+                    table.table.table-bordered.table-hover.mt-2.shadow.table-striped
+                        thead 
+                            tr 
+                                td(style="width: 400px") Discord ID
+                                td Kullanıcı Adı
+                                td Yetki
+                                td(style="width: 100px") Eylem
+                        tbody 
+                            each user in users
+                                tr 
+                                    td #{user.dc_id}
+                                    td #{user.name}
+                                    td #{user.role}
+                                    td 
+                                        button.btn.btn-danger.btn-sm Sil

@@ -1,11 +1,12 @@
-nav.navbar.navbar-expand-md.navbar-dark.bg-info.shadow
+nav.navbar.navbar-expand-md.shadow.istebg.navbar-dark
             div.container
-                a(href="/" style="color: green;").navbar-brand.text-light FilmSitesi
+                a(href="/" style="color: green;").navbar-brand.text-light
+                    img(src="img/yatay_logo.png" width=250)
                 button(type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse")
                     span.navbar-toggler-icon
 
                 div.collapse.navbar-collapse#navbarCollapse
-                    div.navbar-nav
+                    div.navbar-nav.text-light.text-bold
 
                         li.nav-item
                             a(href="/" class=(path=='/'?'nav-link active':'nav-link')) Ana Sayfa
@@ -16,13 +17,7 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-info.shadow
 
                         if isAuthenticated
                             li.nav-item
-                                a(href="/izlenmisfilmler" class=(path=='/izlenmisfilmler'?'nav-link active':'nav-link')) İzlenmis Filmler
-
-                            li.nav-item
-                                a(href="/izlenecekfilmler" class=(path=='/izlenecekfilmler'?'nav-link active':'nav-link')) İzlenecek Filmler
-
-                            li.nav-item
-                                a(href="/filmoner" class=(path=='/filmoner'?'nav-link active':'nav-link')) Film Öner
+                                a(href="/tamamlanmis" class=(path=='/tamamlanmis'?'nav-link active':'nav-link')) Tamamlanmış İşler
 
                             li.nav-item
                                 a.nav-link.me-2(href="/logout") Çıkış Yap

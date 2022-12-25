@@ -1,0 +1,31 @@
+extends ./layouts/main-layout.pug 
+
+block styles
+    link(rel="stylesheet" href="/css/forms.css")
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet")
+    script(src="https://kit.fontawesome.com/a81368914c.js")
+block content
+    .row
+        .col-md-12
+            .container
+                .img
+                    a(href="/")
+                        img(src='img/iste.png')
+                .login-content
+                    form(action="/login" method="POST")
+                        h2.title Ho&scedil; Geldiniz
+                        .input-div.one
+                            .i
+                                i.fas.fa-user
+                            .div
+                                input(type="text" name="name" placeholder="Kullanıcı Adı").form-control#email
+                        .input-div.pass
+                            .i
+                                i.fas.fa-lock
+                            .div
+                                input(type="password" name="password" placeholder="Şifre").form-control#password
+                        a(href='/register') Hesabın yok mu? Kayıt ol.
+                        input.btn(type='submit' value='Giriş Yap')
+
+        

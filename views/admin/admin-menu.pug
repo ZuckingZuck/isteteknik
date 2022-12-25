@@ -1,0 +1,34 @@
+.sidebar(data-color='white' data-active-color='danger')
+  .logo
+    a.simple-text.logo-mini(href='#')
+      .logo-image-small
+        
+      // <p>CT</p>
+    a.simple-text.logo-normal(href='#')
+      | #{user.name}
+      //
+        <div class="logo-image-big">
+        <img src="../assets/img/logo-big.png">
+        </div>
+  .sidebar-wrapper
+    ul.nav
+      li(class=(path=='/dashboard'?'active':''))
+        a(href='/admin')
+          i.nc-icon.nc-bank
+          p Dashboard
+      li(class=(path=='/users'?'active':''))
+        a(href='/admin/users')
+          i.fas.fa-users
+          p Kullanıcılar
+      li(class=(path=='/tamamlanmis'?'active':''))
+        a(href='/admin/tamamlanmis')
+          i.far.fa-check-circle
+          p Tamamlanmış İşler
+      li(class=(path=='/yapilacak'?'active':''))
+        a(href='/admin/yapilacak')
+          i.fas.fa-th-list
+          p Yapılacak İşler
+      li(class=(path=='/profil'?'active':''))
+        a(href='/admin/profile')
+          i.nc-icon.nc-single-02
+          p Profil

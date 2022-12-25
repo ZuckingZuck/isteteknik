@@ -1,0 +1,57 @@
+extends ./admin-layout.pug 
+
+block content
+        .content
+            .row
+                .col-lg-3.col-md-6.col-sm-6
+                    .card.card-stats
+                        .card-body
+                            .row
+                                .col-5.col-md-4
+                                    .icon-big.text-center.icon-warning
+                                        i.fas.fa-film.text-warning
+                                .col-7.col-md-8
+                                    .numbers
+                                        p.card-category Tamamlanmış İşler
+                                        p.card-title#izlenmisfilmler 
+                                        p
+                        .card-footer
+                            hr
+                            .stats
+                                i.fas.fa-check
+                                |                   Tamamlanmış Tüm İşler
+                .col-lg-3.col-md-6.col-sm-6
+                    .card.card-stats
+                        .card-body
+                            .row
+                                .col-5.col-md-4
+                                    .icon-big.text-center.icon-warning
+                                        i.fas.fa-ticket-alt.text-danger
+                                .col-7.col-md-8
+                                    .numbers
+                                        p.card-category Yapılacak İşler
+                                        p.card-title#izlenecekfilmler 
+                                        p
+                        .card-footer
+                            hr
+                            .stats
+                                i.fas.fa-list-ul
+                                |   Yapılmamış İş Var
+                .col-lg-3.col-md-6.col-sm-6
+                    .card.card-stats
+                        .card-body
+                            .row
+                                .col-5.col-md-4
+                                    .icon-big.text-center.icon-warning
+                                        i.fas.fa-users.text-primary
+                                .col-7.col-md-8
+                                    .numbers
+                                        p.card-category Kayıtlı Kullanıcılar
+                                        p.card-title #{users.length}
+                                        p
+                        .card-footer
+                            hr
+                            .stats
+                                i.fas.fa-user
+                                |                   Kay&imath;tl&imath; kullan&imath;c&imath; say&imath;s&imath;
+                

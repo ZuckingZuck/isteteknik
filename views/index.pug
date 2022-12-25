@@ -4,47 +4,47 @@ extends ./layouts/main-layout.pug
 block content
 
     .row
-        .col-md-6
+        .col-md-12
 
-            div.bg-info.p-3.text-light.mt-2.rounded.shadow İZLENMİŞ FİLMLER
+            div.istenavbg.p-3.mt-2.rounded.shadow.text-light Tamamlanmış İşler
             
-            if filmler.length > 0
+            if YapilmisIsler.length > 0
                 table.table.table-bordered.table-info.table-hover.mt-3.shadow
                     thead
                         tr
-                            th Film Adı
-                            th(style="width: 60px;") Puan
-                            th(style="width: 80px;") Eylem
+                            th Kasa
+                            th Anakart
+                            th Yapılan İş
+                            th Talep Eden
+                            th Tarih
                     tbody
-                        each film in filmler
+                        each is in YapilmisIsler
                             tr
-                                td.text-capitalize !{film.film}
-                                if film.puan.toString().length > 1
-                                    td !{film.puan}
-                                else
-                                    td !{film.puan}.0
-                                td
-                                    a.btn.btn-info.btn-sm(href=`/filmdetay/${film.id}`) Detay
+                                td.text-capitalize !{is.kasa}
+                                td.text-capitalize !{is.anakart}
+                                td.text-capitalize !{is.yapilmisis}
+                                td.text-capitalize !{is.talepeden}
+                                td.text-capitalize #{is.tarih.getDate()}.#{is.tarih.getMonth()+1}.#{is.tarih.getFullYear()}
                                     
             else
                 h1 Henüz Paylaşımda Bulunmamışsın.
 
-        .col-md-6
+        //- .col-md-6
             
-            div.bg-info.p-3.text-light.mt-2.rounded.shadow İZLENECEK FİLMLER
+        //-     div.bg-info.p-3.text-light.mt-2.rounded.shadow İZLENECEK FİLMLER
 
-            if izlenecekfilmler.length > 0
-                table.table.table-bordered.table-info.table-hover.mt-3.shadow
-                    thead
-                        tr
-                            th Film Adı
-                            th(style="width: 80px;") Eylem
-                    tbody
-                        each film in izlenecekfilmler
-                            tr
-                                td.text-capitalize !{film.film}
-                                td
-                                    a.btn.btn-info.btn-sm(href=`/izlenecekfilmdetay/${film.id}`) Detay
+        //-     if izlenecekfilmler.length > 0
+        //-         table.table.table-bordered.table-info.table-hover.mt-3.shadow
+        //-             thead
+        //-                 tr
+        //-                     th Film Adı
+        //-                     th(style="width: 80px;") Eylem
+        //-             tbody
+        //-                 each film in izlenecekfilmler
+        //-                     tr
+        //-                         td.text-capitalize !{film.film}
+        //-                         td
+        //-                             a.btn.btn-info.btn-sm(href=`/izlenecekfilmdetay/${film.id}`) Detay
                                     
                                     
             else

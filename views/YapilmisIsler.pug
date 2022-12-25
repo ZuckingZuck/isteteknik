@@ -1,0 +1,47 @@
+extends ./layouts/main-layout.pug 
+
+
+block content
+
+    if (action !== 'undefined' && action === 'delete')
+        div.alert.alert-success#saklan.mt-3 Yapılmış İş Silindi!
+
+    form(action="/yapilmisisekle" method='POST').mt-3.bg-dark.p-2.rounded.shadow
+        div.form-group
+            label.text-light.mx-auto
+                strong Yapılmış İş Ekle
+            input(type="text" id="kasa" name="kasa" placeholder="Kasa").form-control
+            input(type="text" id="anakart" name="anakart" placeholder="Anakart").form-control
+            input(type="text" id="yapilmisis" name="yapilmisis" placeholder="Yapılmış İş").form-control
+            input(type="text" id="talepeden" name="talepeden" placeholder="Talep Eden").form-control
+            button(type="submit").btn.btn-primary.mt-2 Kaydet
+    form
+    
+    if YapilmisIsler.length > 0
+        table.table.table-bordered.table-dark.table-hover.mt-3.shadow
+            thead
+                tr
+                    th Kasa
+                    th Teslim Alan
+                    th(width="150px") Tarih
+                    th(style="width: 70px;") Sil
+            tbody
+                each is in YapilmisIsler
+                    tr
+                        td.text-capitalize !{is.kasa}
+                        td !{is.teslimalan}
+                        td #{is.tarih.getDate()}.#{is.tarih.getMonth()+1}.#{is.tarih.getFullYear()}
+                        td
+                            form(action="/aktar" method='POST')
+                                input(type='hidden' name="kasa" value=`${is.kasa}`)
+                                input(type='hidden' name="id" value=`${is._id}`)
+                                input(type='submit' value="Aktar").btn.btn-danger.btn-sm
+                        td
+                            form(action="/yapilmisissil" method='POST')
+                                input(type='hidden' name="id" value=`${is._id}`)
+                                input(type='submit' value="Sil").btn.btn-danger.btn-sm
+
+                           
+                            
+    else
+        h1 Henüz Paylaşımda Bulunmamışsın.

@@ -1,0 +1,13 @@
+extends ./layouts/main-layout.pug 
+
+
+block content
+    form(action="/isduzenle" method='POST').mt-3.bg-dark.p-2.rounded.shadow
+        div.form-group
+            label.text-light.mx-auto
+                strong İş Güncelle
+            input(type="text" id="filmadi" name="filmadi" value=`${is.kasa}`).form-control.mb-2
+            input(type="text" id="filmpos" name="filmpos" value=`${is.anakart}`).form-control.mb-2
+            input(type="text" id="filmpuan" name="filmpuan" value=`${is.teslimalan}`).form-control.mb-2
+            input(type="hidden" id="filmid" name="filmid" value=`${is._id}`).form-control.mb-2
+            button(type="submit").btn.btn-primary.mt-2 Güncelle

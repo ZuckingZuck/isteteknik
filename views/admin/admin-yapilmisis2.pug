@@ -1,0 +1,38 @@
+extends ./admin-layout.pug 
+
+block content
+    .content
+            .row
+
+                    if (action !== 'undefined' && action === 'edit')
+                        div.alert.alert-success.text-light#kaybol Yapılmış İş Güncellendi.
+            
+            .row
+                
+                if YapilacakIsler.length > 0
+                    table.table.table-bordered.table-hover.mt-3.shadow.table-striped
+                        thead
+                            tr
+                                th Film Adı
+                                th Öneren Kişi
+                                th(style="width: 150px;") Eylem
+                                th(style="width: 70px;") Sil
+                        tbody
+                            each is in YapilacakIsler
+                                tr
+                                    td.text-capitalize !{is.kasa}
+                                    td !{is.teslimalan}
+                                    td
+                                        form(action="/aktar" method='POST')
+                                            input(type='hidden' name="filmadi" value=`${is.kasa}`)
+                                            input(type='hidden' name="filmid" value=`${is._id}`)
+                                            input(type='submit' value="Tamamlandı").btn.btn-info.btn-sm
+                                    td
+                                        form(action="/yapilacakissil" method='POST')
+                                            input(type='hidden' name="id" value=`${is._id}`)
+                                            input(type='submit' value="Sil").btn.btn-danger.btn-sm
+
+                                    
+                                        
+                else
+                    h1 Henüz Paylaşımda Bulunmamışsın.
