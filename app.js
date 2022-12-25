@@ -21,7 +21,7 @@ const mongoDbStore = require('connect-mongodb-session')(session);
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
+console.log("test");
 
 
 const cookieParser = require('cookie-parser');
