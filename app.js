@@ -29,7 +29,7 @@ const port = process.env.PORT || 8080;
 const User = require('./models/user');
 
 
-const ConnectionString = 'mongodb+srv://mahir:mahir1453@cluster0.jvxj5iv.mongodb.net/?retryWrites=true&w=majority';
+const ConnectionString = '';
 
 var store = new mongoDbStore({
     uri: ConnectionString,
